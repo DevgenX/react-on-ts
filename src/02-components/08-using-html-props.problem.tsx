@@ -1,11 +1,26 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 
-export const Button = ({ className, ...rest }: {}) => {
+type InputProps = Omit<ComponentProps<"button">, "onChange"> & {
+  onClick?: (event: React.MouseEventHandler<HTMLButtonElement>) => void;
+};
+
+export const Button = ({ className, onClick, ...rest }: InputProps) => {
   return (
-    <button {...rest} className={`default-classname ${className}`}></button>
+    <button
+      {...rest}
+      onClick={onClick}
+      className={`default-classname ${className}`}
+    ></button>
   );
 };
 
 const Parent = () => {
-  return <Button onClick={() => {}} type="button"></Button>;
+  return (
+    <Button
+      onClick={(e) => {
+        console.log(e);
+      }}
+      type="button"
+    ></Button>
+  );
 };

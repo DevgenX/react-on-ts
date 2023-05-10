@@ -1,6 +1,11 @@
 import React from "react";
+import { FC } from "react";
 
-export const Button = (props: {}) => {
+type Props = {
+  children?: React.ReactNode;
+};
+
+export const Button = (props: { children: React.ReactNode }) => {
   return <button>{props.children}</button>;
 };
 

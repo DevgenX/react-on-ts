@@ -6,12 +6,14 @@ interface Data {
   name: string;
 }
 
+type DataType = Data | undefined;
+
 const fetchData = () => {
   return Promise.resolve({ id: 1, name: "John" });
 };
 
 export const Component = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState<Data | undefined>();
 
   useEffect(() => {
     fetchData().then((val) => {

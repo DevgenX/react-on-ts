@@ -1,9 +1,12 @@
 import { ComponentProps } from "react";
 import { Equal, Expect } from "../helpers/type-utils";
 
-export const Input = (
-  props: ComponentProps<"input"> & { onChange: (value: string) => void }
-) => {
+// override the default type brought by component props
+type InputProps = Omit<ComponentProps<"input">, "onChange"> & {
+  onChange: (value: string) => void;
+};
+
+export const Input = (props: InputProps) => {
   return (
     <input
       {...props}
